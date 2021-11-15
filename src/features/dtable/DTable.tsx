@@ -6,6 +6,12 @@
 // }
 import * as _ from 'lodash';
 
+const Parse = require('parse');
+Parse.initialize("aAppId", "aSecretKey");
+//javascriptKey is required only if you have it on server.
+
+Parse.serverURL = 'http://localhost:1337/parse'
+
 // element move and then reorder. (not just swap position)
 function eleMove(arr, from, to) {
   return arr.reduce((prev, current, idx, self) => {

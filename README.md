@@ -5,7 +5,20 @@ Dynamic Table 前(后)端动态表格行列，可行性测试， React + SSR (Ne
 TODO:  
 - every cell, onChange event.  
 - modify original data (or copy)  
-- save to remote database (or local pouchdb / sqlite / cache)
+- save to remote database (or local pouchdb / sqlite / cache)  
+
+# 使用Parse-server  
+配合parse-server后端使用。  
+// Node.js version 15.x  
+// MongoDB 5.x  
+// 一行一行粘贴在命令行里  
+```  
+npx nrm use taobao  
+npm install -g parse-server  
+npm install -g mongodb-runner  ## 如果已有mongodb  这行可以省略  
+mongodb-runner start  ##  如果已有mongodb  这行可以省略  
+parse-server --appId aAppId --masterKey aSecretKey --databaseURI mongodb://localhost:27017/parseserverdb  
+```
 
 
 # Redux Toolkit TypeScript Example
