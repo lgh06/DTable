@@ -1,3 +1,13 @@
+# DTable  
+
+Dynamic Table 前(后)端动态表格行列，可行性测试， React + SSR (Next.js)
+
+TODO:  
+- every cell, onChange event.  
+- modify original data (or copy)  
+- save to remote database (or local pouchdb / sqlite / cache)
+
+
 # Redux Toolkit TypeScript Example
 
 This example shows how to integrate Next.js with [Redux Toolkit](https://redux-toolkit.js.org).
