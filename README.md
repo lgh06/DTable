@@ -7,7 +7,7 @@ TODO:
 - modify original data (or copy)  
 - save to remote database (or local pouchdb / sqlite / cache)  
 
-# 使用Parse-server  
+# !!废弃!! 使用Parse-server  
 配合parse-server后端使用。  
 // Node.js version 15.x  
 // MongoDB 5.x  
