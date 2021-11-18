@@ -5,12 +5,7 @@
 //   </>;
 // }
 import * as _ from 'lodash';
-
-const Parse = require('parse');
-Parse.initialize("aAppId", "aSecretKey");
-//javascriptKey is required only if you have it on server.
-
-Parse.serverURL = 'http://localhost:1337/parse'
+import { useGetBlockByIdAndTypeQuery } from '../http/httpSlice'
 
 // element move and then reorder. (not just swap position)
 function eleMove(arr, from, to) {
@@ -35,6 +30,14 @@ function eleMove(arr, from, to) {
 }
 
 function DTable() {
+  const {
+    data: block,
+    isLoading,
+    isSuccess,
+    isError,
+    error
+  } = useGetBlockByIdAndTypeQuery({blockId: '1637203260626.1',type:'block_meta'});
+  console.log(block)
   let tableData = {
     columns: [
       {
