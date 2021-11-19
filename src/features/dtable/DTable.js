@@ -37,7 +37,6 @@ function DTable() {
     isError,
     error
   } = useGetBlockByIdAndTypeQuery({blockId: '1637203260626.1',type:'block_real'});
-  console.log(block)
   let tableData = {
     columns: [
       {
