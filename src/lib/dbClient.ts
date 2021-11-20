@@ -2,7 +2,7 @@
 // https://github.com/vercel/next.js/blob/1d2ac3b225e7fc29/examples/with-mongodb/lib/mongodb.js
 // https://github.com/hoangvvo/nextjs-mongodb-app/blob/0496af33a39bcbddc/api-lib/middlewares/database.js
 // https://docs.mongodb.com/drivers/node/current/usage-examples/findOne/  Version 4.2
-import { MongoClient } from "mongodb";
+import { MongoClient, Db } from "mongodb";
 
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/';
 
@@ -14,7 +14,7 @@ const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/';
 global.mongodb = global.mongodb || {};
 
 
-async function getClient() {
+async function getClient(): Promise<MongoClient>{
   if (!global.mongodb.client) {
     global.mongodb.client = new MongoClient(MONGODB_URI);
   }
@@ -27,7 +27,7 @@ async function getClient() {
 
 
 // can be used in both api middleware and in api.
-async function getDB(dbName, req) {
+async function getDB(dbName, req): Promise<Db>{
   if (!dbName) {
     dbName = 'blockdb'
   }

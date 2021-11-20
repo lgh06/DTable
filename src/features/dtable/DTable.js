@@ -31,12 +31,24 @@ function eleMove(arr, from, to) {
 
 function DTable() {
   const {
-    data: block,
+    data: block_real,
     isLoading,
     isSuccess,
     isError,
     error
-  } = useGetBlockByIdAndTypeQuery({blockId: '1637203260626.1',type:'block_real'});
+  } = useGetBlockByIdAndTypeQuery(
+    {
+      block_id: '1637203260626.1',
+      type:'block_real',
+      sort: {"rows.__rowid": 1}
+    });
+  // const {
+  //   data: block_meta,
+  //   isLoading,
+  //   isSuccess,
+  //   isError,
+  //   error
+  // } = useGetBlockByIdAndTypeQuery({block_id: '1637203260626.1',type:'block_meta'});
   let tableData = {
     columns: [
       {

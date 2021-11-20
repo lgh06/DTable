@@ -13,8 +13,12 @@ export default async function handler(req, res) {
     }else if (req.body.type === 'block_real'){
       collection = db.collection('block_real');
     }
+    let options = {};
+    if (req.body.sort){
+      options.sort = req.body.sort;
+    }
 
-    return collection.findOne({block_id: req.body.block_id}).then(doc => {
+    return collection.findOne({block_id: req.body.block_id}, options).then(doc => {
       if(doc){
         return res.status(200).json(doc)
       }else{

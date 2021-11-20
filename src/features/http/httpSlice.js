@@ -12,12 +12,13 @@ export const httpSlice = createApi({
     // The `getPosts` endpoint is a "query" operation that returns data
     getBlockByIdAndType: builder.query({
       // The URL for the request is '/api/block'
-      query: ({blockId, type}) => ({
+      query: ({block_id, type, sort}) => ({
         url: '/block',
         method: 'POST',
         body: {
-          "block_id": blockId,
-          "type": type 
+          block_id,
+          type,
+          sort
         }
       }),
     })
