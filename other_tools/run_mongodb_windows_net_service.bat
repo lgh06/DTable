@@ -1,4 +1,5 @@
-:: Mongodbå®˜ç½‘ä¸Šçš„windowsç‰ˆæœ¬å®‰è£…åŒ…ï¼Œé»˜è®¤ä¸ºç½‘ç»œæœåŠ¡
-:: è‹¥æ²¡æœ‰è¿è¡Œï¼Œæ‰§è¡Œæ­¤è„šæœ¬å¯ä»¥è¿è¡Œmongdodbçš„ç½‘ç»œæœåŠ¡
+rem Open this file in ANSI / GBK / GB2312 encoding.
+@rem Mongodb¹ÙÍøÉÏµÄwindows°æ±¾°²×°°ü£¬Ä¬ÈÏÎªÍøÂç·şÎñ
+@rem ÈôÃ»ÓĞÔËĞĞ£¬Ö´ĞĞ´Ë½Å±¾¿ÉÒÔÔËĞĞmongdodbµÄÍøÂç·şÎñ
 %1 mshta vbscript:CreateObject("Shell.Application").ShellExecute("cmd.exe","/c %~s0 ::","","runas",1)(window.close)&&exit
 net start mongodb
