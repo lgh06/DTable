@@ -1,6 +1,8 @@
 // Import the RTK Query methods from the React-specific entry point
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
+// https://redux-toolkit.js.org/rtk-query/overview
+
 // Define our single API slice object
 export const httpSlice = createApi({
   // The cache reducer expects to be added at `state.http` (already default - this is optional)

@@ -1,11 +1,9 @@
-// function Row(props) {
-  
-//   return <>
-//     <td></td>
-//   </>;
-// }
+
+import React, { useMemo } from 'react';
 import * as _ from 'lodash';
 import { useGetBlockByIdAndTypeQuery } from '../http/httpSlice'
+import { useTable } from 'react-table'
+
 
 // element move and then reorder. (not just swap position)
 function eleMove(arr, from, to) {
@@ -29,89 +27,95 @@ function eleMove(arr, from, to) {
   }, []);
 }
 
+function DataTable({data, columns}) {
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    rows,
+    prepareRow,
+  } = useTable({ columns, data })
+
+  return (
+    <table {...getTableProps()} style={{ border: 'solid 1px blue' }}>
+      <thead>
+        {headerGroups.map(headerGroup => (
+          <tr {...headerGroup.getHeaderGroupProps()}>
+            {headerGroup.headers.map(column => (
+              <th
+                {...column.getHeaderProps()}
+                style={{
+                  borderBottom: 'solid 3px red',
+                  background: 'aliceblue',
+                  color: 'black',
+                  fontWeight: 'bold',
+                }}
+              >
+                {column.render('Header')}
+              </th>
+            ))}
+          </tr>
+        ))}
+      </thead>
+      <tbody {...getTableBodyProps()}>
+        {rows.map(row => {
+          prepareRow(row)
+          return (
+            <tr {...row.getRowProps()}>
+              {row.cells.map(cell => {
+                return (
+                  <td
+                    {...cell.getCellProps()}
+                    style={{
+                      padding: '10px',
+                      border: 'solid 1px gray',
+                      background: 'papayawhip',
+                    }}
+                  >
+                    {cell.render('Cell')}
+                  </td>
+                )
+              })}
+            </tr>
+          )
+        })}
+      </tbody>
+    </table>
+  )
+}
 function DTable() {
   const {
     data: block_real,
-    isLoading,
-    isSuccess,
-    isError,
-    error
   } = useGetBlockByIdAndTypeQuery(
     {
       block_id: '1637203260626.1',
       type:'block_real',
-      sort: {"rows.__rowid": 1}
+      sort: {"__row_order": 1}
     });
-  // const {
-  //   data: block_meta,
-  //   isLoading,
-  //   isSuccess,
-  //   isError,
-  //   error
-  // } = useGetBlockByIdAndTypeQuery({block_id: '1637203260626.1',type:'block_meta'});
-  let tableData = {
-    columns: [
-      {
-        text:'id',
-        order: 1,
-      },
-      {
-        text:'姓名',
-        order: 3,
-      },
-      {
-        text:'住址',
-        order: 2,
-      },
-      {
-        text:'手机号',
-        order: 4,
-      }
-    ],
-    rows: [
-      {
-        id : 1,
-        name: 'Happy1',
-        address: '南街',
-        mobile: '111',
-      },
-      {
-        id : 2,
-        name: 'Happy2',
-        address: '西街',
-        mobile: '222',
-      }, 
-      {
-        id : 3,
-        name: 'Happy2',
-        address: '北街',
-        mobile: '333',
-      }
-    ],
-  };
+  const {
+    data: block_meta,
+  } = useGetBlockByIdAndTypeQuery(
+    {
+      block_id: '1637203260626.1',
+      type:'block_meta',
+      // TODO MongoDB $unwind resort
+      // sort: {"columns.order": 1}
+    });
+  
+  const data = block_real;
+  console.log(block_real)
+  
+  let columns;
+  if (block_meta){
+    columns = _.cloneDeep(block_meta[0].columns)
+    columns.forEach(v => {
+      v.Header = v.text;
+      v.accessor = v.key;
+    });
+  }
+  if (!data || !columns) return <></>;
+  return <><DataTable data={data} columns={columns}></DataTable></>;
 
-  return <>
-    测试  
-    <table>
-      <thead>
-        {/* {_.orderBy(tableData.columns, 'order', 'asc').map(v => (
-          <th>{v.text}</th>
-        ))} */}
-        {eleMove(tableData.columns, 0, 2).map(v => (
-          <th>{v.text}</th>
-        ))}
-      </thead>
-      <tbody>
-        {tableData.rows.map(row => (
-          <tr>
-            {Object.keys(row).map(key => (
-              <td>{row[key]}</td> 
-            ))}
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </>
 }
 
 export default DTable

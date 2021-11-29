@@ -18,7 +18,11 @@ export default async function handler(req, res) {
       options.sort = req.body.sort;
     }
 
-    return collection.findOne({block_id: req.body.block_id}, options).then(doc => {
+    // https://docs.mongodb.com/manual/tutorial/query-documents/  
+    // https://docs.mongodb.com/drivers/node/current/usage-examples/find/
+    // https://docs.mongodb.com/manual/aggregation/
+    // https://stackoverflow.com/questions/65316265/mongodb-sorting-nested-array-fields
+    return collection.find({block_id: req.body.block_id}, options).toArray().then(doc => {
       if(doc){
         return res.status(200).json(doc)
       }else{
