@@ -1,5 +1,5 @@
 
-import React, { useMemo } from 'react';
+import React from 'react';
 import * as _ from 'lodash';
 import { useGetBlockByIdAndTypeQuery } from '../http/httpSlice'
 import { useTable } from 'react-table'
@@ -101,11 +101,13 @@ function DTable() {
       // TODO MongoDB $unwind resort
       // sort: {"columns.order": 1}
     });
+
+  console.log(block_real, block_meta)
   
-  const data = block_real;
-  console.log(block_real)
-  
-  let columns;
+  let columns, data;
+
+  data = block_real;
+
   if (block_meta){
     columns = _.cloneDeep(block_meta[0].columns)
     columns.forEach(v => {
@@ -113,6 +115,7 @@ function DTable() {
       v.accessor = v.key;
     });
   }
+
   if (!data || !columns) return <></>;
   return <><DataTable data={data} columns={columns}></DataTable></>;
 
