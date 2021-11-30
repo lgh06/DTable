@@ -66,7 +66,7 @@ export const selectCount = (state) => state.counter.value
 // We can also write thunks by hand, which may contain both sync and async logic.
 // Here's an example of conditionally dispatching actions based on current state.
 
-// 异步操作， 另参见 
+// 异步操作， 另参见本文件上方,以及
 // https://github.com/lgh06/web-prompter/blob/master/src/reducers/playerSlice.js
 export const incrementIfOdd =
   (amount) =>
