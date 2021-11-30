@@ -1,7 +1,8 @@
 // https://github.com/vercel/next.js/blob/00c68f38704c5bd2/examples/with-mongodb-mongoose/lib/dbConnect.js
 // https://github.com/vercel/next.js/blob/1d2ac3b225e7fc29/examples/with-mongodb/lib/mongodb.js
 // https://github.com/hoangvvo/nextjs-mongodb-app/blob/0496af33a39bcbddc/api-lib/middlewares/database.js
-// https://docs.mongodb.com/drivers/node/current/usage-examples/findOne/  Version 4.2
+// https://docs.mongodb.com/drivers/node/current/usage-examples/findOne/  Version 4.2  
+// Mongodb connection , used in Next.js backend API side.
 import { MongoClient, Db } from "mongodb";
 
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/';

@@ -1,5 +1,7 @@
-import { getDB } from '../../lib/dbClient';
+import { getDB } from '../../lib';
 
+// http://localhost:3000/api/block
+// see also https://nextjs.org/docs/api-routes/dynamic-api-routes
 export default async function handler(req, res) {
   // let meta = db.get('block_meta');
   // let real = db.get('block_real');

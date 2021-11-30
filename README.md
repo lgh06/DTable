@@ -10,10 +10,16 @@ TODO:
 
 ### see also:  
 https://github.com/vercel/next.js/tree/canary/examples/with-redux  next & redux template  
+https://redux-toolkit.js.org/rtk-query/overview  Redux Toolkit, RTK query  
+
+
 https://nextjs.org/docs/api-routes/dynamic-api-routes  next.js API routes  
+
+
 https://docs.mongodb.com/manual/crud/  MongoDB manual CRUD  
 https://docs.mongodb.com/drivers/node/current/usage-examples/find/  MongoDB NodeJS driver, find  
-https://redux-toolkit.js.org/rtk-query/overview  Redux Toolkit, RTK query  
+
+
 https://react-table.tanstack.com/docs/quick-start  React-Table  
 https://codesandbox.io/s/5vxlnjrw1n?file=/DraggableTable.js  
 React-Table - HOC DraggableTable, A react-table with draggable columns  
