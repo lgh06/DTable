@@ -1,7 +1,7 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
 
 import counterReducer from '../features/counter/counterSlice'
-import { httpSlice } from '../features/http/httpSlice'
+import { httpSlice } from '../features/slice/httpSlice'
 
 
 export function makeStore() {

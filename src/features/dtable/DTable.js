@@ -1,7 +1,7 @@
 
 import React from 'react';
 import * as _ from 'lodash';
-import { useGetBlockByIdAndTypeQuery } from '../http/httpSlice'
+import { useGetBlockByIdAndTypeQuery } from '../slice/httpSlice'
 import { useTable } from 'react-table'
 
 
