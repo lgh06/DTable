@@ -2,11 +2,30 @@
 
 Dynamic Table 前(后)端动态表格行列，可行性测试， React + SSR (Next.js)
 
-TODO:  
-- every cell, onChange event.  
-- modify original data (or copy)  
-- save to remote database (or local pouchdb / sqlite / cache)  
 
+### TODO  
+四步走战略：  
+1. 能查
+    - 根据某block_id 查询到多条数据 (进行中)
+    - 分页 
+    - 筛选  
+
+1. 能建、能增
+    - 新建block，可以对block命名  
+    - 能在已有行最后，新增新行  
+    - 能在已有列最后，一个一个增加新列  
+
+1. 能改
+    - 可以对block重新命名  
+    - 改变每个表格单元格内的值，点击确定菜单保存。
+    - 改变行顺序，拖动改变行顺序
+    - 改变列顺序，新增dropdown菜单改变列顺序  
+
+1. 能优雅地改
+    - 直接拖动某列，改变列顺序
+    - websocket改造，状态改变，自动保存更改  
+    - 撤销，重做，历史版本保存
+    - 历史版本恢复
 
 ### see also:  
 https://github.com/vercel/next.js/tree/canary/examples/with-redux  next & redux template  
