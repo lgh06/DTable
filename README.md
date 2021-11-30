@@ -1,10 +1,15 @@
 # DTable  
 
-Dynamic Table 前(后)端动态表格行列，可行性测试， React + SSR (Next.js)
+Dynamic Table 前(后)端动态表格行列，可行性测试， React + SSR (Next.js)  
+
+文档及说明：  
+https://geps.yuque.com/zyqx28/ex21at/tn9xgt  
+https://trip.feishu.cn/wiki/wikcnuqZH8YHCHWA8xxDICGqQ3f  
 
 
 ### TODO  
-四步走战略：  
+四步走战略： 
+(每一步，靠前的，优先做，靠后难做的，可以以后做)  
 1. 能查
     - 根据某block_id 查询到多条数据 (进行中)
     - 分页 
