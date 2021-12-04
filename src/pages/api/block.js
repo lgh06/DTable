@@ -1,5 +1,6 @@
 import { getDB } from '../../lib';
 
+// 后端 api/block 接口
 // http://localhost:3000/api/block
 // see also https://nextjs.org/docs/api-routes/dynamic-api-routes
 export default async function handler(req, res) {

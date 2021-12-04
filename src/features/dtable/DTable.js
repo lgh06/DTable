@@ -1,7 +1,6 @@
 
 import React from 'react';
 import * as _ from 'lodash';
-import { useGetBlockByIdAndTypeQuery } from '../slice/httpSlice'
 import { useTable } from 'react-table'
 
 
@@ -83,41 +82,22 @@ function DataTable({data, columns}) {
     </table>
   )
 }
-function DTable() {
-  const {
-    data: block_real,
-  } = useGetBlockByIdAndTypeQuery(
-    {
-      block_id: '1637203260626.1',
-      type:'block_real',
-      sort: {"__row_order": 1}
-    });
-  const {
-    data: block_meta,
-  } = useGetBlockByIdAndTypeQuery(
-    {
-      block_id: '1637203260626.1',
-      type:'block_meta',
-      // TODO MongoDB $unwind resort
-      // sort: {"columns.order": 1}
-    });
+// 前端DTable组件
+// 传入 block_meta 与 block_real即可
+function DTable({meta, real}) {
 
-  console.log(block_real, block_meta)
-  
-  let columns, data;
-
-  data = block_real;
-
-  if (block_meta){
-    columns = _.cloneDeep(block_meta[0].columns)
+  // transform block_meta to columns (react-table accepted)
+  let columns;
+  if (meta){
+    columns = _.cloneDeep(meta[0].columns)
     columns.forEach(v => {
       v.Header = v.text;
       v.accessor = v.key;
     });
   }
 
-  if (!data || !columns) return <></>;
-  return <><DataTable data={data} columns={columns}></DataTable></>;
+  if (!real || !columns) return <div>Loading</div>;
+  return <DataTable data={real} columns={columns}></DataTable>;
 
 }
 
