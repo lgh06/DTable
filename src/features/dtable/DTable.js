@@ -34,7 +34,11 @@ function DataTable({data, columns}) {
     rows,
     prepareRow,
   } = useTable({ columns, data })
-
+  // props append to table & tr
+  console.log(getTableProps(), getTableBodyProps())
+  //
+  console.log(headerGroups, rows)
+  console.log(prepareRow)
   return (
     <table {...getTableProps()} style={{ border: 'solid 1px blue' }}>
       <thead>
